@@ -7,6 +7,7 @@ import { Erro404 } from 'containers/erro404'
 import { PrivateLayout } from 'layouts/privateLayout'
 import { PublicLayout } from 'layouts/publicLayout'
 import { useAuthStore } from 'store/auth/auth'
+import { Torneios } from 'containers/torneios'
 
 export function Router() {
   const { token } = useAuthStore()
@@ -25,6 +26,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<PrivateLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/torneios" element={<Torneios />} />
         <Route path="/404" element={<Erro404 />} />
 
         <Route path="*" element={<Navigate to="/404" />} />

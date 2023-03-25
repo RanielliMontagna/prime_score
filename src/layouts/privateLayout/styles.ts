@@ -7,4 +7,6 @@ export const OutletContainer = styled.div`
 
   height: 100vh;
   overflow: auto;
+
+  display: flex;
 `

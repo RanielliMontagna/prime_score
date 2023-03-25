@@ -13,6 +13,7 @@ import { useStyles } from './styles'
 import { rotas } from './static'
 import type { NavbarLinkProps } from './types'
 import { useAuthStore } from 'store/auth/auth'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   const { classes, cx } = useStyles()
@@ -30,13 +31,16 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 
 export function SideBar() {
   const { logout } = useAuthStore()
+  const { pathname } = useLocation()
+  const _navigate = useNavigate()
 
   const links = rotas.map((link) => (
     <NavbarLink
       {...link}
       key={link.label}
       // TODO: adicionar lógica para mudar o estilo do link ativo
-      // active={index === active}
+      active={pathname === link.path}
+      onClick={() => _navigate(link.path)}
     />
   ))
 
@@ -56,12 +60,12 @@ export function SideBar() {
         <Title order={2}>PS</Title>
       </Center>
       <Navbar.Section grow mt={50}>
-        <Stack justify="center" spacing={0}>
+        <Stack justify="center" style={{ gap: 8 }}>
           {links}
         </Stack>
       </Navbar.Section>
       <Navbar.Section>
-        <Stack justify="center" spacing={0}>
+        <Stack justify="center">
           <NavbarLink icon={IconLogout} label="Sair" onClick={logout} />
         </Stack>
       </Navbar.Section>
