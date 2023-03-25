@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Center,
   Navbar,
   Stack,
@@ -14,6 +15,7 @@ import { rotas } from './static'
 import type { NavbarLinkProps } from './types'
 import { useAuthStore } from 'store/auth/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useTheme } from '@emotion/react'
 
 function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   const { classes, cx } = useStyles()
@@ -30,9 +32,10 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 }
 
 export function SideBar() {
-  const { logout } = useAuthStore()
+  const { logout, user } = useAuthStore()
   const { pathname } = useLocation()
   const _navigate = useNavigate()
+  const { colors } = useTheme()
 
   const links = rotas.map((link) => (
     <NavbarLink
@@ -68,6 +71,19 @@ export function SideBar() {
         <Stack justify="center">
           <NavbarLink icon={IconLogout} label="Sair" onClick={logout} />
         </Stack>
+      </Navbar.Section>
+      <Navbar.Section
+        style={{ display: 'flex', justifyContent: 'center' }}
+        mt={8}
+      >
+        <Avatar
+          src={user?.photoURL}
+          radius={8}
+          size="md"
+          style={{
+            boxShadow: `0 0 0 2px ${colors.grape[9]}`,
+          }}
+        />
       </Navbar.Section>
     </Navbar>
   )

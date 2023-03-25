@@ -1,9 +1,18 @@
-import { deleteCookie, getCookie, setCookie } from 'helpers/cookies'
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth'
 import { create } from 'zustand'
 
 import { AuthState, AuthStore } from './types'
 
+import { deleteCookie, getCookie, setCookie } from 'helpers/cookies'
+import app from 'libs/firebase'
+
 const tokenCookieName = 'token'
+const auth = getAuth(app)
 
 const initialState: AuthState = {
   token: getCookie(tokenCookieName) || null,
@@ -13,13 +22,42 @@ const initialState: AuthState = {
 export const useAuthStore = create<AuthStore>((set, get) => ({
   ...initialState,
 
-  login: (token, user) => {
-    get().setToken(token)
-    get().setUser(user)
+  login: async () => {
+    try {
+      const provider = new GoogleAuthProvider()
+      const result = await signInWithPopup(auth, provider)
+
+      const credential = GoogleAuthProvider.credentialFromResult(result)
+
+      const token = credential?.accessToken
+      const user = result.user
+
+      if (!token || !user) {
+        throw new Error('Não foi possível fazer login')
+      }
+
+      get().setToken(token)
+      get().setUser({
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        uid: user.uid,
+      })
+
+      return { token, user }
+    } catch (err) {
+      console.error(err)
+    }
   },
-  logout: () => {
-    deleteCookie(tokenCookieName)
-    set({ token: null, user: null })
+  logout: async () => {
+    try {
+      await signOut(auth)
+
+      deleteCookie(tokenCookieName)
+      set({ token: null, user: null })
+    } catch (err) {
+      console.error(err)
+    }
   },
   setToken: (token) => {
     setCookie({ name: tokenCookieName, value: token })

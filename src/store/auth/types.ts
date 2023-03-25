@@ -11,9 +11,9 @@ export interface AuthState {
 }
 
 export interface AuthStore extends AuthState {
-  login: (token: string, user: User) => void
+  login: () => void
   logout: () => void
   setToken: (token: string) => void
-  setUser: (user: User) => void
+  setUser: (user: User | null) => void
   clearStore: () => void
 }

@@ -16,7 +16,10 @@ export function Router() {
     return (
       <Routes>
         <Route path="/" element={<PublicLayout />}>
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Route>
       </Routes>
     )
@@ -29,6 +32,7 @@ export function Router() {
         <Route path="/torneios" element={<Torneios />} />
         <Route path="/404" element={<Erro404 />} />
 
+        <Route path="/login" element={<Navigate to="/" />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Route>
     </Routes>
