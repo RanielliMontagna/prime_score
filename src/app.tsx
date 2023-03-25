@@ -1,14 +1,16 @@
-import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom'
+import { MantineProvider } from '@mantine/core'
+
 import { Router } from 'routes/routes'
+import { theme } from 'styles/theme'
 
 function App() {
   return (
-    <ChakraProvider>
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-    </ChakraProvider>
+    </MantineProvider>
   )
 }
 
