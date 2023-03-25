@@ -1,14 +1,17 @@
 import { deleteCookie, getCookie, setCookie } from 'helpers/cookies'
 import { create } from 'zustand'
-import { AuthStore } from './types'
+
+import { AuthState, AuthStore } from './types'
 
 const tokenCookieName = 'token'
 
-console.log(getCookie(tokenCookieName))
-
-export const useAuthStore = create<AuthStore>((set, get) => ({
+const initialState: AuthState = {
   token: getCookie(tokenCookieName) || null,
   user: null,
+}
+
+export const useAuthStore = create<AuthStore>((set, get) => ({
+  ...initialState,
 
   login: (token, user) => {
     get().setToken(token)
@@ -23,4 +26,5 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
     set({ token })
   },
   setUser: (user) => set({ user }),
+  clearStore: () => set(initialState),
 }))
