@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { SideBar } from 'components/sidebar'
 import { OutletContainer } from './styles'
 
-export function DefaultLayout() {
+export function PrivateLayout() {
   const { pathname } = useLocation()
 
   if (pathname === '/404') {

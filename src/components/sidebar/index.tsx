@@ -12,6 +12,7 @@ import { IconLogout } from '@tabler/icons-react'
 import { useStyles } from './styles'
 import { rotas } from './static'
 import type { NavbarLinkProps } from './types'
+import { useAuthStore } from 'store/auth/auth'
 
 function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   const { classes, cx } = useStyles()
@@ -28,6 +29,8 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 }
 
 export function SideBar() {
+  const { logout } = useAuthStore()
+
   const links = rotas.map((link) => (
     <NavbarLink
       {...link}
@@ -59,7 +62,7 @@ export function SideBar() {
       </Navbar.Section>
       <Navbar.Section>
         <Stack justify="center" spacing={0}>
-          <NavbarLink icon={IconLogout} label="Sair" />
+          <NavbarLink icon={IconLogout} label="Sair" onClick={logout} />
         </Stack>
       </Navbar.Section>
     </Navbar>
