@@ -37,10 +37,11 @@ export function Login() {
             </Text>
           </div>
           <div>
-            <Button leftIcon={<IconBrandGoogle size="18" />}>
-              <Text size="sm" onClick={handleLogin}>
-                Entrar com o Google
-              </Text>
+            <Button
+              leftIcon={<IconBrandGoogle size="18" />}
+              onClick={handleLogin}
+            >
+              <Text size="sm">Entrar com o Google</Text>
             </Button>
           </div>
         </div>

@@ -51,7 +51,7 @@ export function PublicHeader() {
               leftIcon={<IconBrandGoogle size={18} />}
               onClick={handleLogin}
             >
-              Entrar com Google
+              Entrar com o Google
             </Button>
           </Group>
 
@@ -99,7 +99,7 @@ export function PublicHeader() {
               leftIcon={<IconBrandGoogle size={18} />}
               onClick={handleLogin}
             >
-              Entrar com Google
+              Entrar com o Google
             </Button>
           </Group>
         </ScrollArea>

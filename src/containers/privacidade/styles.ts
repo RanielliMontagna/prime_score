@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { rem } from '@mantine/core'
 
-export const TermosContainer = styled.div`
+export const PrivacidadeContainer = styled.div`
   display: flex;
   justify-content: center;
 `
 
-export const TermosContent = styled.div`
+export const PrivacidadeContent = styled.div`
   display: flex;
   flex-direction: column;
   width: ${rem(1120)};
