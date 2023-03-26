@@ -10,10 +10,12 @@ export function PublicLayout() {
   const { pathname } = useLocation()
 
   return (
-    <OutletContainer>
+    <div>
       {loading && <Loading />}
       {pathname !== '/login' && <PublicHeader />}
-      <Outlet />
-    </OutletContainer>
+      <OutletContainer withHeader={pathname !== '/login'}>
+        <Outlet />
+      </OutletContainer>
+    </div>
   )
 }

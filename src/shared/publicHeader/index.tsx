@@ -47,7 +47,7 @@ export function PublicHeader() {
 
           <Group className={classes.hiddenMobile}>
             <Button
-              variant="default"
+              variant="gradient"
               leftIcon={<IconBrandGoogle size={18} />}
               onClick={handleLogin}
             >
@@ -95,7 +95,7 @@ export function PublicHeader() {
 
           <Group position="center" grow pb="xl" px="md">
             <Button
-              variant="default"
+              variant="gradient"
               leftIcon={<IconBrandGoogle size={18} />}
               onClick={handleLogin}
             >

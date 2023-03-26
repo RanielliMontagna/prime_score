@@ -42,6 +42,7 @@ export const LoginContainer = styled.div`
 
 export const LeftSide = styled.div`
   justify-content: space-around;
+  background-color: ${({ theme }) => theme.colors.dark[7]};
 
   img {
     max-width: 400px;

@@ -1,10 +1,13 @@
 import styled from '@emotion/styled'
+import { rem } from '@mantine/core'
 
-export const OutletContainer = styled.div`
-  background-color: ${({ theme }) => {
-    return theme.colors.dark[8]
+interface IOutletContainerProps {
+  withHeader?: boolean
+}
+
+export const OutletContainer = styled.div<IOutletContainerProps>`
+  height: ${({ withHeader }) => {
+    return withHeader ? `calc(100vh - ${rem(60)})` : '100vh'
   }};
-
-  height: 100vh;
   overflow: auto;
 `

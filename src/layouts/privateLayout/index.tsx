@@ -5,7 +5,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import app from 'libs/firebase'
 import { getAuth } from 'firebase/auth'
 
-import { OutletContainer } from './styles'
+import { OutletContainer, PrivateLayoutContainer } from './styles'
 
 import { useAppStore } from 'store/app/app'
 import { SideBar } from 'components/sidebar'
@@ -19,7 +19,11 @@ export function PrivateLayout() {
 
   const auth = getAuth(app)
 
-  if (pathname === '/404') {
+  if (
+    pathname === '/404' ||
+    pathname === '/termos' ||
+    pathname === '/privacidade'
+  ) {
     return <Outlet />
   }
 
@@ -37,10 +41,12 @@ export function PrivateLayout() {
   }, [auth])
 
   return (
-    <OutletContainer>
-      {loading && <Loading />}
+    <PrivateLayoutContainer>
       <SideBar />
-      <Outlet />
-    </OutletContainer>
+      {loading && <Loading />}
+      <OutletContainer>
+        <Outlet />
+      </OutletContainer>
+    </PrivateLayoutContainer>
   )
 }
