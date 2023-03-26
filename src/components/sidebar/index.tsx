@@ -8,7 +8,7 @@ import {
   Tooltip,
   UnstyledButton,
 } from '@mantine/core'
-import { IconLogout } from '@tabler/icons-react'
+import { IconLogout, IconMoonStars, IconSun } from '@tabler/icons-react'
 
 import { useStyles } from './styles'
 import { rotas } from './static'
@@ -16,6 +16,7 @@ import type { NavbarLinkProps } from './types'
 import { useAuthStore } from 'store/auth/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTheme } from '@emotion/react'
+import { useAppStore } from 'store/app/app'
 
 function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   const { classes, cx } = useStyles()
@@ -33,6 +34,8 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 
 export function SideBar() {
   const { logout, user } = useAuthStore()
+  const { theme, setTheme } = useAppStore()
+
   const { pathname } = useLocation()
   const _navigate = useNavigate()
   const { colors } = useTheme()
@@ -57,14 +60,26 @@ export function SideBar() {
           variant: 'filled',
           color: theme.primaryColor,
         }).background,
+        border: 'none',
       })}
     >
       <Center>
-        <Title order={2}>PS</Title>
+        <Title order={2} sx={(theme) => ({ color: theme.white })}>
+          PS
+        </Title>
       </Center>
       <Navbar.Section grow mt={50}>
         <Stack justify="center" style={{ gap: 8 }}>
           {links}
+        </Stack>
+      </Navbar.Section>
+      <Navbar.Section>
+        <Stack justify="center">
+          <NavbarLink
+            icon={theme === 'dark' ? IconSun : IconMoonStars}
+            label={theme === 'dark' ? 'Usar tema claro' : 'Usar tema escuro'}
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          />
         </Stack>
       </Navbar.Section>
       <Navbar.Section>

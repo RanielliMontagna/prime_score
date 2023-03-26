@@ -4,10 +4,6 @@ export const PrivateLayoutContainer = styled.div`
   display: flex;
   overflow: auto;
 
-  background-color: ${({ theme }) => {
-    return theme.colors.dark[8]
-  }};
-
   height: 100vh;
 `
 
