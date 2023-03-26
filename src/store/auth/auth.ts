@@ -36,6 +36,8 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
         throw new Error('Não foi possível fazer login')
       }
 
+      window.location.href = '/'
+
       get().setToken(token)
       get().setUser({
         displayName: user.displayName,

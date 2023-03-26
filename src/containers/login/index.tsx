@@ -4,7 +4,7 @@ import { LeftSide, LoginContainer, RightSide, TermosContainer } from './styles'
 import Illustration from 'assets/login/illustration.svg'
 import { IconBrandGoogle } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
-import { useLogin } from './useLogin'
+import { useLogin } from 'hooks/useLogin'
 
 export function Login() {
   const { handleLogin } = useLogin()
@@ -47,8 +47,8 @@ export function Login() {
         <TermosContainer>
           <Text size="sm" color="gray.6">
             Ao entrar, você concorda com os nossos
-            <br /> <Link to="#">Termos de Serviço</Link> e{' '}
-            <Link to="#">Política de Privacidade</Link>.
+            <br /> <Link to="/termos">Termos de Serviço</Link> e{' '}
+            <Link to="/privacidade">Política de Privacidade</Link>.
           </Text>
         </TermosContainer>
       </RightSide>

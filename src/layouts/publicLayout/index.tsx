@@ -1,15 +1,18 @@
 import { Loading } from 'components/loading'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
+import { PublicHeader } from 'shared/publicHeader'
 import { useAppStore } from 'store/app/app'
 
 import { OutletContainer } from './styles'
 
 export function PublicLayout() {
   const { loading } = useAppStore()
+  const { pathname } = useLocation()
 
   return (
     <OutletContainer>
       {loading && <Loading />}
+      {pathname !== '/login' && <PublicHeader />}
       <Outlet />
     </OutletContainer>
   )
