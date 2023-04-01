@@ -6,8 +6,10 @@ specifiers:
   '@mantine/core': ^6.0.4
   '@mantine/form': ^6.0.5
   '@mantine/hooks': ^6.0.4
+  '@mantine/notifications': ^6.0.5
   '@tabler/icons-react': ^2.11.0
   '@types/js-cookie': ^3.0.3
+  '@types/node': ^18.15.11
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
   '@vitejs/plugin-react': ^3.1.0
@@ -15,12 +17,14 @@ specifiers:
   firebase: ^9.18.0
   framer-motion: ^10.9.1
   js-cookie: ^3.0.1
+  random-js: ^2.1.0
   react: ^18.2.0
   react-dom: ^18.2.0
   react-router-dom: ^6.9.0
   typescript: ^4.9.3
   vite: ^4.2.0
   vite-tsconfig-paths: ^4.0.7
+  xorshift: ^1.2.0
   zustand: ^4.3.6
 
 dependencies:
@@ -29,24 +33,28 @@ dependencies:
   '@mantine/core': 6.0.4_ipyndhye6uwdcnqqgtz2dwxwfm
   '@mantine/form': 6.0.5_react@18.2.0
   '@mantine/hooks': 6.0.4_react@18.2.0
+  '@mantine/notifications': 6.0.5_ordvvez6mrxlqyz6sv56zwslmq
   '@tabler/icons-react': 2.11.0_react@18.2.0
   dayjs: 1.11.7
   firebase: 9.18.0
   framer-motion: 10.9.1_biqbaboplfbrettd7655fr4n2y
   js-cookie: 3.0.1
+  random-js: 2.1.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.9.0_biqbaboplfbrettd7655fr4n2y
   vite-tsconfig-paths: 4.0.7_27d6rnnqnnz33bvg4pqy2xno6y
+  xorshift: 1.2.0
   zustand: 4.3.6_react@18.2.0
 
 devDependencies:
   '@types/js-cookie': 3.0.3
+  '@types/node': 18.15.11
   '@types/react': 18.0.29
   '@types/react-dom': 18.0.11
   '@vitejs/plugin-react': 3.1.0_vite@4.2.1
   typescript: 4.9.5
-  vite: 4.2.1
+  vite: 4.2.1_@types+node@18.15.11
 
 packages:
 
@@ -1072,7 +1080,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.6
-      '@types/node': 18.15.9
+      '@types/node': 18.15.11
     dev: false
 
   /@grpc/proto-loader/0.6.13:
@@ -1176,6 +1184,22 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@mantine/notifications/6.0.5_ordvvez6mrxlqyz6sv56zwslmq:
+    resolution: {integrity: sha512-JNYKQ24gHMOUVR9rg5piJwjT219pTTy36LoEsbOl8mAK17u/QrFtRVnvChIbvje49ALRuLuRtvHDJfdL8vojvg==}
+    peerDependencies:
+      '@mantine/core': 6.0.5
+      '@mantine/hooks': 6.0.5
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@mantine/core': 6.0.4_ipyndhye6uwdcnqqgtz2dwxwfm
+      '@mantine/hooks': 6.0.4_react@18.2.0
+      '@mantine/utils': 6.0.5_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-transition-group: 4.4.2_biqbaboplfbrettd7655fr4n2y
+    dev: false
+
   /@mantine/styles/6.0.4_keyspdss4kub3atek752gc6fle:
     resolution: {integrity: sha512-DbyshlwoCjn3Yw2iMNzo1fv+3TJcZgwjB86JvxcfjJwz6Br5IzsVlJPcK9kcTbzvcN1kMT07y5aK+3pZv7qBFw==}
     peerDependencies:
@@ -1192,6 +1216,14 @@ packages:
 
   /@mantine/utils/6.0.4_react@18.2.0:
     resolution: {integrity: sha512-oggRX3fC/tsoxEaxJ+3DhFpb4D4YeCg5XvueGsX3AuoHY87bypaI3JyvFbSIV8oLMW6B/heHNu6VPHVSnrim9A==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@mantine/utils/6.0.5_react@18.2.0:
+    resolution: {integrity: sha512-P2FVcBd2oZ9ANOsZUtTwJ4+FV6NgCRE5B7trsT8gEFUbMeQLietcsZEgAe5xhzEu9Afp5V8X8a+E9yx1blMpNg==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
@@ -1380,9 +1412,8 @@ packages:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
     dev: false
 
-  /@types/node/18.15.9:
-    resolution: {integrity: sha512-dUxhiNzBLr6IqlZXz6e/rN2YQXlFgOei/Dxy+e3cyXTJ4txSUbGT2/fmnD6zd/75jDMeW5bDee+YXxlFKHoV0A==}
-    dev: false
+  /@types/node/18.15.11:
+    resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -1418,7 +1449,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.21.3
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.2.1
+      vite: 4.2.1_@types+node@18.15.11
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1555,6 +1586,13 @@ packages:
 
   /detect-node-es/1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
+    dev: false
+
+  /dom-helpers/5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+      csstype: 3.1.1
     dev: false
 
   /electron-to-chromium/1.4.339:
@@ -1919,7 +1957,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 18.15.9
+      '@types/node': 18.15.11
       long: 4.0.0
     dev: false
 
@@ -1938,8 +1976,12 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 18.15.9
+      '@types/node': 18.15.11
       long: 5.2.1
+    dev: false
+
+  /random-js/2.1.0:
+    resolution: {integrity: sha512-CRUyWmnzmZBA7RZSVGq0xMqmgCyPPxbiKNLFA5ud7KenojVX2s7Gv+V7eB52beKTPGxWRnVZ7D/tCIgYJJ8vNQ==}
     dev: false
 
   /react-dom/18.2.0_react@18.2.0:
@@ -2048,6 +2090,20 @@ packages:
       use-latest: 1.2.1_k4en7uapxoluuejoeg6o3ic2aa
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-transition-group/4.4.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': 7.21.0
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:
@@ -2270,13 +2326,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.1_typescript@4.9.5
-      vite: 4.2.1
+      vite: 4.2.1_@types+node@18.15.11
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: false
 
-  /vite/4.2.1:
+  /vite/4.2.1_@types+node@18.15.11:
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2301,6 +2357,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 18.15.11
       esbuild: 0.17.12
       postcss: 8.4.21
       resolve: 1.22.1
@@ -2340,6 +2397,10 @@ packages:
       ansi-styles: 4.3.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
+    dev: false
+
+  /xorshift/1.2.0:
+    resolution: {integrity: sha512-iYgNnGyeeJ4t6U11NpA/QiKy+PXn5Aa3Azg5qkwIFz1tBLllQrjjsk9yzD7IAK0naNU4JxdeDgqW9ov4u/hc4g==}
     dev: false
 
   /y18n/5.0.8:

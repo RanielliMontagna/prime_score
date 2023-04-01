@@ -1,43 +1,45 @@
-import { useForm } from '@mantine/form'
+import { useCallback, useState } from 'react'
+import { Random } from 'random-js'
 
 import type { IGeradorNumerosFormValues } from './types'
 
 export function useGeradorNumeros() {
-  const form = useForm({
-    initialValues: {
-      min: 0,
-      max: 10,
-      amount: 1,
-      duplicates: false,
+  const [loading, _setLoading] = useState(false)
+  const [numbers, setNumbers] = useState<number[]>([])
+
+  const handleGenerate = useCallback(
+    async ({
+      min, // O número mínimo que pode ser gerado
+      max, // O número máximo que pode ser gerado
+      amount, // A quantidade de números que serão gerados
+      duplicates, // Números podem se repetir
+    }: IGeradorNumerosFormValues) => {
+      _setLoading(true)
+
+      const random = new Random()
+      const numbers: number[] = []
+
+      for (let i = 0; i < amount; i++) {
+        const number = random.integer(min, max)
+
+        if (duplicates) {
+          numbers.push(number)
+        } else {
+          if (!numbers.includes(number)) {
+            numbers.push(number)
+          } else {
+            i--
+          }
+        }
+      }
+
+      setTimeout(() => {
+        setNumbers(numbers)
+        _setLoading(false)
+      }, 200)
     },
+    [],
+  )
 
-    // functions will be used to validate values at corresponding key
-    validate: {
-      amount: (value) => {
-        if (value < 1) {
-          return 'A quantidade de números deve ser maior que 0'
-        }
-      },
-      min: (value) => {
-        if (value < 0) {
-          return 'O valor mínimo deve ser maior ou igual a 0'
-        }
-      },
-      max: (value) => {
-        if (value < 0) {
-          return 'O valor máximo deve ser maior ou igual a 0'
-        }
-
-        if (value < form.values.min) {
-          return 'O valor máximo deve ser maior ou igual ao valor mínimo'
-        }
-      },
-    },
-  })
-
-  function handleGenerate(values: IGeradorNumerosFormValues) {
-    console.log(values)
-  }
-
-  return { form, handleGenerate }
+  return { handleGenerate, loading, numbers, setNumbers }
 }
