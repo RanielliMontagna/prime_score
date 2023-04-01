@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "github": {
+    "enabled": true,
+    "auto_alias": true,
+    "deployments": {
+      "production": {
+        "branch": "master"
+      }
+    }
+  }
+}
