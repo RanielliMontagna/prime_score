@@ -1,75 +1,73 @@
-import { useTheme } from '@emotion/react'
-import { Button, Checkbox, TextInput } from '@mantine/core'
+import { useEffect, useMemo, useState } from 'react'
+import { createFormContext } from '@mantine/form'
 
-import { Icon123 } from '@tabler/icons-react'
+import type { IGeradorNumerosFormValues } from './types'
 import { useGeradorNumeros } from './useGeradorNumeros'
 
-import {
-  DivFields,
-  Form,
-  Header,
-  IconHeader,
-  SimpleGridContainer,
-} from './styles'
+import { Gerador } from './gerador'
+import { Resultado } from './resultado'
 
-import { notifications } from '@mantine/notifications'
+const [FormProvider, useFormContext, useForm] =
+  createFormContext<IGeradorNumerosFormValues>()
+
+export function useGeradorNumerosFormContext() {
+  const form = useFormContext()
+
+  return form
+}
 
 export function GeradorNumeros() {
-  const { colors, primaryColor } = useTheme()
-  const { form, handleGenerate } = useGeradorNumeros()
+  const { loading, numbers, setNumbers, handleGenerate } = useGeradorNumeros()
+
+  const initialValues = useMemo(
+    () => ({ min: 0, max: 10, amount: 1, duplicates: false }),
+    [],
+  )
+
+  const form = useForm({
+    initialValues: initialValues,
+
+    // functions will be used to validate values at corresponding key
+    validate: {
+      amount: (value) => {
+        if (Number(value) < 1) {
+          return 'A quantidade de números deve ser maior que 0'
+        }
+
+        if (Number(value) > form.values.max) {
+          return 'A quantidade de números deve ser menor ou igual ao valor máximo'
+        }
+      },
+      min: (value) => {
+        if (Number(value) < 0) {
+          return 'O valor mínimo deve ser maior ou igual a 0'
+        }
+      },
+      max: (value) => {
+        if (Number(value) < 0) {
+          return 'O valor máximo deve ser maior ou igual a 0'
+        }
+
+        if (Number(value) < form.values.min) {
+          return 'O valor máximo deve ser maior ou igual ao valor mínimo'
+        }
+
+        if (Number(value) > 1000) {
+          return 'O valor máximo deve ser menor ou igual a 1000'
+        }
+      },
+    },
+  })
 
   return (
-    <SimpleGridContainer>
-      <Header>
-        <IconHeader>
-          <Icon123 size={40} color={colors[primaryColor][6]} />
-        </IconHeader>
-        <h1>Gerador de Números Aleatórios</h1>
-        <p>
-          Gere uma lista de números aleatórios com base em um intervalo de
-          valores.
-        </p>
-      </Header>
-      <Form onSubmit={form.onSubmit(handleGenerate)}>
-        <DivFields>
-          <TextInput
-            id="min"
-            name="min"
-            type="number"
-            label="Valor mínimo"
-            required
-            {...form.getInputProps('min')}
-            onFocus={(e) => e.target.select()}
-          />
-          <TextInput
-            id="max"
-            name="max"
-            type="number"
-            label="Valor máximo"
-            required
-            {...form.getInputProps('max')}
-            onFocus={(e) => e.target.select()}
-          />
-          <TextInput
-            id="amount"
-            name="amount"
-            type="number"
-            label="Quantidade de números"
-            required
-            {...form.getInputProps('amount')}
-            onFocus={(e) => e.target.select()}
-          />
-          <Checkbox
-            id="duplicates"
-            name="duplicates"
-            label="Permitir números duplicados?"
-            {...form.getInputProps('duplicates')}
-          />
-        </DivFields>
-        <Button type="submit" fullWidth size="lg" onClick={() => {}}>
-          Gerar
-        </Button>
-      </Form>
-    </SimpleGridContainer>
+    <FormProvider form={form}>
+      <form onSubmit={form.onSubmit(handleGenerate)} style={{ height: '100%' }}>
+        {numbers.length > 0 ? (
+          <Resultado numbers={numbers} setNumbers={setNumbers} />
+        ) : (
+          <Gerador loading={loading} />
+        )}
+      </form>
+    </FormProvider>
   )
 }
