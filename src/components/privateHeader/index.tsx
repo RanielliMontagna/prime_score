@@ -23,6 +23,7 @@ import { IconChevronDown } from '@tabler/icons-react'
 import { useStyles } from './styles'
 import { rotas } from 'components/sidebar/static'
 import { useAppStore } from 'store/app/app'
+import { useAuthStore } from 'store/auth/auth'
 
 export function PrivateHeader() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -32,6 +33,7 @@ export function PrivateHeader() {
   const { classes, theme } = useStyles()
   const _navigate = useNavigate()
 
+  const { logout, user } = useAuthStore()
   const { theme: themeApp, setTheme } = useAppStore()
 
   const links = rotas
@@ -117,7 +119,11 @@ export function PrivateHeader() {
           >
             Tema {theme.colorScheme === 'dark' ? 'Claro' : 'Escuro'}
           </Button>
-          <Button color="red" leftIcon={<IconLogout size="18" />}>
+          <Button
+            color="red"
+            leftIcon={<IconLogout size="18" />}
+            onClick={logout}
+          >
             Sair
           </Button>
         </Group>

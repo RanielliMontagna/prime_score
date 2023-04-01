@@ -70,7 +70,7 @@ export function PublicHeader() {
         padding="md"
         title="Navegação"
         className={classes.hiddenDesktop}
-        zIndex={1000000}
+        zIndex={10}
       >
         <ScrollArea h={`calc(100vh - ${rem(60)})`} mx="-md">
           <Divider
