@@ -1,6 +1,7 @@
-import { Loading } from 'components/loading'
 import { Outlet, useLocation } from 'react-router-dom'
-import { PublicHeader } from 'shared/publicHeader'
+
+import { Loading } from 'components/loading'
+import { PublicHeader } from 'components/publicHeader'
 import { useAppStore } from 'store/app/app'
 
 import { OutletContainer } from './styles'

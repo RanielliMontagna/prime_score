@@ -1,6 +1,15 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-export const PrivateLayoutContainer = styled.div`
+interface IPrivateLayoutProps {
+  mobile: boolean
+}
+
+const mobileCss = css`
+  flex-direction: column;
+`
+
+export const PrivateLayoutContainer = styled.div<IPrivateLayoutProps>`
   display: flex;
   overflow: auto;
 
@@ -13,6 +22,8 @@ export const PrivateLayoutContainer = styled.div`
       return theme.colors.gray[1]
     }
   }};
+
+  ${({ mobile }) => mobile && mobileCss}
 `
 
 export const OutletContainer = styled.div`

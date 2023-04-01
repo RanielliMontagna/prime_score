@@ -1,19 +1,22 @@
 import { useEffect } from 'react'
-
 import { Outlet, useLocation } from 'react-router-dom'
 
 import app from 'libs/firebase'
 import { getAuth } from 'firebase/auth'
 
+import { useMediaQuery } from '@mantine/hooks'
+
 import { OutletContainer, PrivateLayoutContainer } from './styles'
 
+import { useAuthStore } from 'store/auth/auth'
 import { useAppStore } from 'store/app/app'
 import { SideBar } from 'components/sidebar'
 import { Loading } from 'components/loading'
-import { useAuthStore } from 'store/auth/auth'
+import { PrivateHeader } from 'components/privateHeader'
 
 export function PrivateLayout() {
   const { pathname } = useLocation()
+  const matches = useMediaQuery('(min-width: 768px')
 
   if (
     pathname === '/404' ||
@@ -41,8 +44,8 @@ export function PrivateLayout() {
   }, [auth])
 
   return (
-    <PrivateLayoutContainer>
-      <SideBar />
+    <PrivateLayoutContainer mobile={!matches}>
+      {matches ? <SideBar /> : <PrivateHeader />}
       {loading && <Loading />}
       <OutletContainer>
         <Outlet />
