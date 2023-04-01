@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import { Button, Checkbox, TextInput } from '@mantine/core'
 
 import { Icon123 } from '@tabler/icons-react'
@@ -10,7 +11,8 @@ import {
   IconHeader,
   SimpleGridContainer,
 } from './styles'
-import { useTheme } from '@emotion/react'
+
+import { notifications } from '@mantine/notifications'
 
 export function GeradorNumeros() {
   const { colors, primaryColor } = useTheme()
@@ -64,7 +66,7 @@ export function GeradorNumeros() {
             {...form.getInputProps('duplicates')}
           />
         </DivFields>
-        <Button type="submit" fullWidth size="lg">
+        <Button type="submit" fullWidth size="lg" onClick={() => {}}>
           Gerar
         </Button>
       </Form>

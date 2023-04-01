@@ -1,11 +1,7 @@
 import { BrowserRouter } from 'react-router-dom'
-import { useState } from 'react'
+import { Notifications } from '@mantine/notifications'
 
-import {
-  ColorScheme,
-  ColorSchemeProvider,
-  MantineProvider,
-} from '@mantine/core'
+import { MantineProvider } from '@mantine/core'
 
 import { Router } from 'routes/routes'
 import { theme } from 'styles/theme'
@@ -23,6 +19,7 @@ function App() {
         colorScheme,
       }}
     >
+      <Notifications position="top-right" limit={3} />
       <BrowserRouter>
         <Router />
       </BrowserRouter>
