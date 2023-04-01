@@ -13,11 +13,7 @@ import { Loading } from 'components/loading'
 import { useAuthStore } from 'store/auth/auth'
 
 export function PrivateLayout() {
-  const { setUser } = useAuthStore()
-  const { loading } = useAppStore()
   const { pathname } = useLocation()
-
-  const auth = getAuth(app)
 
   if (
     pathname === '/404' ||
@@ -27,9 +23,13 @@ export function PrivateLayout() {
     return <Outlet />
   }
 
+  const { setUser } = useAuthStore()
+  const { loading } = useAppStore()
+  const auth = getAuth(app)
+
   //Responsável por verificar se o usuário está logado e setar o usuário no store
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth?.onAuthStateChanged((user) => {
       if (user) {
         setUser(user)
       } else {

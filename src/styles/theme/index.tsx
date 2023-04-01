@@ -1,10 +1,14 @@
 import { MantineThemeOverride } from '@mantine/core'
 
 export const theme: MantineThemeOverride = {
-  primaryColor: 'grape',
+  primaryColor: 'blue',
   fontFamily: 'Inter, sans-serif',
   globalStyles: (theme) => ({
     '*': {
+      boxSizing: 'border-box',
+      padding: 0,
+      margin: 0,
+
       '&::-webkit-scrollbar': {
         width: 8,
         height: 8,

@@ -5,6 +5,14 @@ export const PrivateLayoutContainer = styled.div`
   overflow: auto;
 
   height: 100vh;
+
+  background-color: ${({ theme }) => {
+    if (theme.colorScheme === 'dark') {
+      return theme.colors.dark[7]
+    } else {
+      return theme.colors.gray[1]
+    }
+  }};
 `
 
 export const OutletContainer = styled.div`

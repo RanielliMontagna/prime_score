@@ -6,6 +6,7 @@ import { Erro404 } from 'containers/erro404'
 import { Torneios } from 'containers/torneios'
 import { Termos } from 'containers/termos'
 import { Privacidade } from 'containers/privacidade'
+import { GeradorNumeros } from 'containers/geradorNumeros'
 
 import { PrivateLayout } from 'layouts/privateLayout'
 import { PublicLayout } from 'layouts/publicLayout'
@@ -36,6 +37,8 @@ export function Router() {
         <Route path="/torneios" element={<Torneios />} />
         <Route path="/termos" element={<Termos />} />
         <Route path="/privacidade" element={<Privacidade />} />
+        <Route path="/gerador-de-numeros" element={<GeradorNumeros />} />
+
         <Route path="/404" element={<Erro404 />} />
 
         <Route path="/login" element={<Navigate to="/" />} />

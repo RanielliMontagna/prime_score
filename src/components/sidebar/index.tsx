@@ -1,9 +1,9 @@
+import { useTheme } from '@emotion/react'
 import {
   Avatar,
   Center,
   Navbar,
   Stack,
-  Text,
   Title,
   Tooltip,
   UnstyledButton,
@@ -13,13 +13,14 @@ import { IconLogout, IconMoonStars, IconSun } from '@tabler/icons-react'
 import { useStyles } from './styles'
 import { rotas } from './static'
 import type { NavbarLinkProps } from './types'
+
 import { useAuthStore } from 'store/auth/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useTheme } from '@emotion/react'
 import { useAppStore } from 'store/app/app'
 
 function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   const { classes, cx } = useStyles()
+
   return (
     <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
       <UnstyledButton
@@ -38,7 +39,8 @@ export function SideBar() {
 
   const { pathname } = useLocation()
   const _navigate = useNavigate()
-  const { colors } = useTheme()
+
+  const { colors, primaryColor } = useTheme()
 
   const links = rotas.map((link) => (
     <NavbarLink
@@ -96,7 +98,7 @@ export function SideBar() {
           radius={8}
           size="md"
           style={{
-            boxShadow: `0 0 0 2px ${colors.grape[9]}`,
+            boxShadow: `0 0 0 2px ${colors[primaryColor][3]}`,
           }}
         />
       </Navbar.Section>
