@@ -2,7 +2,12 @@ import { useEffect } from 'react'
 import { Button } from '@mantine/core'
 
 import { Header, SimpleGridContainer } from '../styles'
-import { Footer, NumerosContainer, NumeroContainer } from './styles'
+import {
+  Footer,
+  NumerosContainer,
+  NumeroContainer,
+  NumeroPosicao,
+} from './styles'
 import { useGeradorNumerosFormContext } from '..'
 import { notifications } from '@mantine/notifications'
 import { IconCheck } from '@tabler/icons-react'
@@ -26,6 +31,7 @@ export function Resultado({ numbers, setNumbers }: IResultadoProps) {
         {numbers.map((number, index) => (
           <NumeroContainer key={index}>
             <span>{number}</span>
+            <NumeroPosicao>{index + 1}º</NumeroPosicao>
           </NumeroContainer>
         ))}
       </NumerosContainer>

@@ -16,8 +16,6 @@ export function useGeradorNumeros() {
     }: IGeradorNumerosFormValues) => {
       _setLoading(true)
 
-      console.log('duplicates', duplicates)
-
       const random = new Random()
       const numbers: number[] = []
 
