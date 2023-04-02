@@ -5,10 +5,10 @@ import { useStyles } from './styles'
 
 export function Erro404() {
   const { classes } = useStyles()
-  const _navigate = useNavigate()
+  const navigate = useNavigate()
 
   function handleVoltar() {
-    _navigate('/')
+    navigate('/')
   }
 
   return (

@@ -3,7 +3,7 @@ import { MantineThemeOverride } from '@mantine/core'
 export const theme: MantineThemeOverride = {
   primaryColor: 'blue',
   fontFamily: 'Inter, sans-serif',
-  globalStyles: (theme) => ({
+  globalStyles: ({ colors, colorScheme }) => ({
     '*': {
       boxSizing: 'border-box',
       padding: 0,
@@ -14,22 +14,13 @@ export const theme: MantineThemeOverride = {
         height: 8,
       },
       '&::-webkit-scrollbar-track': {
-        background:
-          theme.colorScheme === 'dark'
-            ? theme.colors.dark[6]
-            : theme.colors.gray[1],
+        background: colorScheme === 'dark' ? colors.dark[6] : colors.gray[1],
       },
       '&::-webkit-scrollbar-thumb': {
-        background:
-          theme.colorScheme === 'dark'
-            ? theme.colors.dark[5]
-            : theme.colors.gray[3],
+        background: colorScheme === 'dark' ? colors.dark[5] : colors.gray[3],
       },
       '&::-webkit-scrollbar-thumb:hover': {
-        background:
-          theme.colorScheme === 'dark'
-            ? theme.colors.dark[4]
-            : theme.colors.gray[4],
+        background: colorScheme === 'dark' ? colors.dark[4] : colors.gray[4],
       },
     },
   }),

@@ -3,7 +3,7 @@ import { Button, Checkbox, TextInput } from '@mantine/core'
 
 import { Icon123 } from '@tabler/icons-react'
 
-import { DivFields, Form, IconHeader } from './styles'
+import { DivFields, IconHeader } from './styles'
 import { SimpleGridContainer, Header } from '../styles'
 import { useGeradorNumerosFormContext } from '..'
 
@@ -65,9 +65,11 @@ export function Gerador({ loading }: IGeradorProps) {
           {...form.getInputProps('duplicates')}
         />
       </DivFields>
-      <Button type="submit" fullWidth size="lg" loading={loading}>
-        Gerar
-      </Button>
+      <div style={{ paddingBottom: 16 }}>
+        <Button type="submit" fullWidth size="lg" loading={loading}>
+          Gerar
+        </Button>
+      </div>
     </SimpleGridContainer>
   )
 }
