@@ -10,10 +10,6 @@ interface SetCookie {
 export function setCookie({ name, value, days = 7 }: SetCookie) {
   const date = dayjs().add(days, 'day').toDate()
 
-  const expires = `expires=${date.toUTCString()}`
-  const secure = location.protocol === 'https:' ? 'secure' : ''
-  const cookieString = `${name}=${value}; ${expires}; path=/${secure}; HttpOnly`
-
   Cookies.set(name, value, { expires: date })
 }
 

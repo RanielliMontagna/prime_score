@@ -18,9 +18,13 @@ import {
   SimpleGrid,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { IconLogout, IconMoonStars, IconSun } from '@tabler/icons-react'
+import {
+  IconLogout,
+  IconMoonStars,
+  IconSun,
+  IconChevronDown,
+} from '@tabler/icons-react'
 
-import { IconChevronDown } from '@tabler/icons-react'
 import { useStyles } from './styles'
 import { rotas } from 'components/sidebar/static'
 import { useAppStore } from 'store/app/app'
@@ -32,9 +36,9 @@ export function PrivateHeader() {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(true)
 
   const { classes, theme } = useStyles()
-  const _navigate = useNavigate()
+  const navigate = useNavigate()
 
-  const { logout, user } = useAuthStore()
+  const { logout } = useAuthStore()
   const { theme: themeApp, setTheme } = useAppStore()
 
   const links = rotas
@@ -44,7 +48,7 @@ export function PrivateHeader() {
         className={classes.subLink}
         key={item.label}
         onClick={() => {
-          _navigate(item.path)
+          navigate(item.path)
           closeDrawer()
         }}
       >

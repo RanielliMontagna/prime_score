@@ -4,7 +4,7 @@ import { Random } from 'random-js'
 import type { IGeradorNumerosFormValues } from './types'
 
 export function useGeradorNumeros() {
-  const [loading, _setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [numbers, setNumbers] = useState<number[]>([])
 
   const handleGenerate = useCallback(
@@ -14,19 +14,19 @@ export function useGeradorNumeros() {
       amount, // A quantidade de números que serão gerados
       duplicates, // Números podem se repetir
     }: IGeradorNumerosFormValues) => {
-      _setLoading(true)
+      setLoading(true)
 
       const random = new Random()
-      const numbers: number[] = []
+      const newNumbers: number[] = []
 
       for (let i = 0; i < amount; i++) {
         const number = random.integer(min, max)
 
         if (duplicates) {
-          numbers.push(number)
+          newNumbers.push(number)
         } else {
-          if (!numbers.includes(number)) {
-            numbers.push(number)
+          if (!newNumbers.includes(number)) {
+            newNumbers.push(number)
           } else {
             i--
           }
@@ -34,8 +34,8 @@ export function useGeradorNumeros() {
       }
 
       setTimeout(() => {
-        setNumbers(numbers)
-        _setLoading(false)
+        setNumbers(newNumbers)
+        setLoading(false)
       }, 200)
     },
     [],

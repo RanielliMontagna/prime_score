@@ -3,7 +3,7 @@ import { Button, Checkbox, TextInput } from '@mantine/core'
 
 import { Icon123 } from '@tabler/icons-react'
 
-import { DivFields, Form, IconHeader } from './styles'
+import { DivFields, IconHeader } from './styles'
 import { SimpleGridContainer, Header } from '../styles'
 import { useGeradorNumerosFormContext } from '..'
 

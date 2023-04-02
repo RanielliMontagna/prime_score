@@ -38,7 +38,7 @@ export function SideBar() {
   const { theme, setTheme } = useAppStore()
 
   const { pathname } = useLocation()
-  const _navigate = useNavigate()
+  const navigate = useNavigate()
 
   const { colors, primaryColor } = useTheme()
 
@@ -48,7 +48,7 @@ export function SideBar() {
       key={link.label}
       // TODO: adicionar lógica para mudar o estilo do link ativo
       active={pathname === link.path}
-      onClick={() => _navigate(link.path)}
+      onClick={() => navigate(link.path)}
     />
   ))
 
@@ -57,10 +57,10 @@ export function SideBar() {
       height="100%"
       width={{ base: 80 }}
       p="md"
-      sx={(theme) => ({
-        backgroundColor: theme.fn.variant({
+      sx={({ fn }) => ({
+        backgroundColor: fn.variant({
           variant: 'filled',
-          color: theme.primaryColor,
+          color: primaryColor,
         }).background,
         border: 'none',
         overflow: 'auto',
@@ -70,7 +70,7 @@ export function SideBar() {
       })}
     >
       <Center>
-        <Title order={2} sx={(theme) => ({ color: theme.white })}>
+        <Title order={2} sx={({ white }) => ({ color: white })}>
           PS
         </Title>
       </Center>
