@@ -63,6 +63,10 @@ export function SideBar() {
           color: theme.primaryColor,
         }).background,
         border: 'none',
+        overflow: 'auto',
+        '&::-webkit-scrollbar': {
+          display: 'none',
+        },
       })}
     >
       <Center>
@@ -75,7 +79,7 @@ export function SideBar() {
           {links}
         </Stack>
       </Navbar.Section>
-      <Navbar.Section>
+      <Navbar.Section mt={8}>
         <Stack justify="center">
           <NavbarLink
             icon={theme === 'dark' ? IconSun : IconMoonStars}

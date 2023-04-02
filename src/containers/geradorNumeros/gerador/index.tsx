@@ -65,9 +65,11 @@ export function Gerador({ loading }: IGeradorProps) {
           {...form.getInputProps('duplicates')}
         />
       </DivFields>
-      <Button type="submit" fullWidth size="lg" loading={loading}>
-        Gerar
-      </Button>
+      <div style={{ paddingBottom: 16 }}>
+        <Button type="submit" fullWidth size="lg" loading={loading}>
+          Gerar
+        </Button>
+      </div>
     </SimpleGridContainer>
   )
 }

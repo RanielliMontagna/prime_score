@@ -15,6 +15,7 @@ import {
   Collapse,
   rem,
   Title,
+  SimpleGrid,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { IconLogout, IconMoonStars, IconSun } from '@tabler/icons-react'
@@ -105,7 +106,7 @@ export function PrivateHeader() {
           color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
         />
 
-        <Group position="center" grow pb="xl" px="md">
+        <SimpleGrid>
           <Button
             variant="gradient"
             leftIcon={
@@ -126,7 +127,7 @@ export function PrivateHeader() {
           >
             Sair
           </Button>
-        </Group>
+        </SimpleGrid>
       </Drawer>
     </Box>
   )

@@ -22,6 +22,11 @@ export const SimpleGridContainer = styled(SimpleGrid)<{
     padding: ${rem(8)} ${rem(16)};
     padding-top: ${({ withoutcenter }) => (withoutcenter ? rem(32) : 0)};
   }
+
+  @media (max-height: 670px) {
+    justify-content: flex-start;
+    padding-top: ${rem(16)};
+  }
 `
 
 export const Header = styled.header`
