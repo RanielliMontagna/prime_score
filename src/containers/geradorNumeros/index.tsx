@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { createFormContext } from '@mantine/form'
 
 import type { IGeradorNumerosFormValues } from './types'
-import { useGeradorNumeros } from './useGeradorNumeros'
+import { useGeradorNumeros } from './useGeradorNumeros/useGeradorNumeros'
 
 import { Gerador } from './gerador'
 import { Resultado } from './resultado'
