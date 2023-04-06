@@ -1,9 +1,12 @@
-import { Button, ButtonProps, Title } from '@mantine/core'
+import { Button, Title } from '@mantine/core'
 import { Fab, SHeader } from './styles'
+import { ButtonHTMLAttributes } from 'react'
+
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 interface IHeaderProps {
   title: string
-  button?: ButtonProps
+  button?: IButtonProps
 }
 
 export function Header({ title, button }: IHeaderProps) {
@@ -11,12 +14,16 @@ export function Header({ title, button }: IHeaderProps) {
     <SHeader>
       <div>
         <Title order={2}>{title}</Title>
-        <Button className="webButton" {...button}>
-          {button?.children}
-        </Button>
-        <Fab className="mobileButton" size="md" {...button}>
-          {button?.children}
-        </Fab>
+        {button && (
+          <>
+            <Button className="webButton" {...button}>
+              {button?.children}
+            </Button>
+            <Fab className="mobileButton" size="md" {...button}>
+              {button?.children}
+            </Fab>
+          </>
+        )}
       </div>
     </SHeader>
   )
