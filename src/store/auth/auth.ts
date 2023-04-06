@@ -10,6 +10,7 @@ import { AuthState, AuthStore } from './types'
 
 import { deleteCookie, getCookie, setCookie } from 'helpers/cookies'
 import app from 'libs/firebase'
+import { useAppStore } from 'store/app/app'
 
 const tokenCookieName = 'token'
 const auth = getAuth(app)
@@ -23,6 +24,7 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   ...initialState,
 
   login: async () => {
+    useAppStore.getState().setLoading(true)
     try {
       const provider = new GoogleAuthProvider()
       const result = await signInWithPopup(auth, provider)
@@ -49,6 +51,8 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
       return { token, user }
     } catch (err) {
       console.error(err)
+    } finally {
+      useAppStore.getState().setLoading(false)
     }
   },
   logout: async () => {
