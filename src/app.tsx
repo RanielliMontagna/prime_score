@@ -1,7 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
-import { Notifications } from '@mantine/notifications'
 
-import { MantineProvider } from '@mantine/core'
+import { QuantunProvider } from '@quantun/core'
 
 import { Router } from 'routes/routes'
 import { theme } from 'styles/theme'
@@ -11,19 +10,11 @@ function App() {
   const { theme: colorScheme } = useAppStore()
 
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        ...theme,
-        colorScheme,
-      }}
-    >
-      <Notifications position="top-right" limit={3} />
+    <QuantunProvider theme={{ ...theme, colorScheme }}>
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-    </MantineProvider>
+    </QuantunProvider>
   )
 }
 
