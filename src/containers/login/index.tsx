@@ -4,10 +4,10 @@ import { LeftSide, LoginContainer, RightSide, TermosContainer } from './styles'
 import Illustration from 'assets/login/illustration.svg'
 import { IconBrandGoogle } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
-import { useLogin } from 'hooks/useLogin'
+import { useAuthStore } from 'store/auth/auth'
 
 export function Login() {
-  const { handleLogin } = useLogin()
+  const { login } = useAuthStore()
 
   return (
     <LoginContainer>
@@ -37,10 +37,7 @@ export function Login() {
             </Text>
           </div>
           <div>
-            <Button
-              leftIcon={<IconBrandGoogle size="18" />}
-              onClick={handleLogin}
-            >
+            <Button leftIcon={<IconBrandGoogle size="18" />} onClick={login}>
               <Text size="sm">Entrar com o Google</Text>
             </Button>
           </div>

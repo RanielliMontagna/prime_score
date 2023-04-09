@@ -12,16 +12,15 @@ import {
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { IconBrandGoogle } from '@tabler/icons-react'
-import { useLogin } from 'hooks/useLogin'
 import { Link } from 'react-router-dom'
 
 import { useStyles } from './styles'
+import { useAuthStore } from 'store/auth/auth'
 
 export function PublicHeader() {
   const [drawerOpened, { toggle, close }] = useDisclosure(false)
   const { classes, theme } = useStyles()
-
-  const { handleLogin } = useLogin()
+  const { login } = useAuthStore()
 
   return (
     <Box>
@@ -49,7 +48,7 @@ export function PublicHeader() {
             <Button
               variant="gradient"
               leftIcon={<IconBrandGoogle size={18} />}
-              onClick={handleLogin}
+              onClick={login}
             >
               Entrar com o Google
             </Button>
@@ -97,7 +96,7 @@ export function PublicHeader() {
             <Button
               variant="gradient"
               leftIcon={<IconBrandGoogle size={18} />}
-              onClick={handleLogin}
+              onClick={login}
             >
               Entrar com o Google
             </Button>
