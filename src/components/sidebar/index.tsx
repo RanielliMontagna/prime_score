@@ -1,28 +1,14 @@
 import { useAppStore } from 'store/app/app'
-import { Sidebar } from '@quantun/core'
+import { Sidebar, ItemSidebar } from '@quantun/core'
 
 import { useTheme } from '@emotion/react'
-import { Avatar, Navbar, Stack, Title, Tooltip, UnstyledButton } from '@mantine/core'
+import { Avatar, Navbar, Stack, Title } from '@mantine/core'
 import { IconLogout, IconMoonStars, IconSun } from '@tabler/icons-react'
 
-import { useStyles } from './styles'
 import { rotas } from './static'
-import type { NavbarLinkProps } from './types'
 
 import { useAuthStore } from 'store/auth/auth'
 import { useNavigate } from 'react-router-dom'
-
-function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
-  const { classes, cx } = useStyles()
-
-  return (
-    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
-      <UnstyledButton onClick={onClick} className={cx(classes.link, { [classes.active]: active })}>
-        <Icon size="1.2rem" stroke={1.5} />
-      </UnstyledButton>
-    </Tooltip>
-  )
-}
 
 export function SideBar() {
   const { logout, user } = useAuthStore()
@@ -49,16 +35,30 @@ export function SideBar() {
         <>
           <Navbar.Section mt={8}>
             <Stack justify="center">
-              <NavbarLink
-                icon={theme === 'dark' ? IconSun : IconMoonStars}
+              <ItemSidebar
+                icon={
+                  theme === 'dark' ? (
+                    <IconSun size="1.2rem" stroke={1.5} />
+                  ) : (
+                    <IconMoonStars size="1.2rem" stroke={1.5} />
+                  )
+                }
                 label={theme === 'dark' ? 'Usar tema claro' : 'Usar tema escuro'}
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                path="/"
+                active={false}
               />
             </Stack>
           </Navbar.Section>
           <Navbar.Section>
             <Stack justify="center">
-              <NavbarLink icon={IconLogout} label="Sair" onClick={logout} />
+              <ItemSidebar
+                icon={<IconLogout size="1.2rem" stroke={1.5} />}
+                label="Sair"
+                onClick={logout}
+                path="/"
+                active={false}
+              />
             </Stack>
           </Navbar.Section>
           <Navbar.Section style={{ display: 'flex', justifyContent: 'center' }} mt={8}>
