@@ -22,9 +22,12 @@ dependencies:
   '@quantun/core':
     specifier: ^1.1.2
     version: 1.1.2(@emotion/react@11.10.6)(@mantine/core@6.0.6)(@mantine/hooks@6.0.6)(@mantine/notifications@6.0.6)(react@18.2.0)
+  '@quantun/login-screen':
+    specifier: ^1.0.0
+    version: 1.0.0(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mantine/core@6.0.6)(@quantun/core@1.1.2)(@tabler/icons-react@2.15.0)(react@18.2.0)
   '@tabler/icons-react':
-    specifier: ^2.11.0
-    version: 2.11.0(react@18.2.0)
+    specifier: ^2.15.0
+    version: 2.15.0(react@18.2.0)
   dayjs:
     specifier: ^1.11.7
     version: 1.11.7
@@ -2735,6 +2738,24 @@ packages:
       - typescript
     dev: true
 
+  /@quantun/login-screen@1.0.0(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mantine/core@6.0.6)(@quantun/core@1.1.2)(@tabler/icons-react@2.15.0)(react@18.2.0):
+    resolution: {integrity: sha512-s0O51L7cILXwUhW1q9Yh/cfqsY9v8KOT8rwNye56M7vldiqOONJbphxfUqMxttUPkWvCTU5/KgmiCp5S6hdc1w==}
+    peerDependencies:
+      '@emotion/react': '>=11.10.6'
+      '@emotion/styled': '>=11.10.6'
+      '@mantine/core': '>=6.0.6'
+      '@quantun/core': 1.1.2
+      '@tabler/icons-react': '>=2.15.0'
+      react: '>=18.1.0'
+    dependencies:
+      '@emotion/react': 11.10.6(@types/react@18.0.29)(react@18.2.0)
+      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.0.29)(react@18.2.0)
+      '@mantine/core': 6.0.6(@emotion/react@11.10.6)(@mantine/hooks@6.0.6)(@types/react@18.0.29)(react-dom@18.2.0)(react@18.2.0)
+      '@quantun/core': 1.1.2(@emotion/react@11.10.6)(@mantine/core@6.0.6)(@mantine/hooks@6.0.6)(@mantine/notifications@6.0.6)(react@18.2.0)
+      '@tabler/icons-react': 2.15.0(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
   /@quantun/prettier@1.0.0:
     resolution: {integrity: sha512-fEHm291n5pOAcLANDIRqz9+o7M4bCAi0xMw85R8aDV09Zpl9GcrtDQx7g2yeCo5XP+l6yNRr56E2gy6uMJzrJA==}
     dev: true
@@ -2872,18 +2893,18 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@tabler/icons-react@2.11.0(react@18.2.0):
-    resolution: {integrity: sha512-Mbie8IFLrtI0sGm802Bmierle0ixIi7FVczShoLjPZwRM0da1HcD588TF7oMuQ09zd241BY+L7M/f0Q6lquBng==}
+  /@tabler/icons-react@2.15.0(react@18.2.0):
+    resolution: {integrity: sha512-yE+0kskRLANxB3ulkJ4UsouvMsNA+C5y58JjWgdHX8T4pLK/9FOtFPdGmZW2Z5SodC6XZCXH/uw0PqAy1I3/JA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@tabler/icons': 2.11.0
+      '@tabler/icons': 2.15.0
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@tabler/icons@2.11.0:
-    resolution: {integrity: sha512-KPESQnvHoSpbAdgzDdrSmeZ9AE8fSU12fU3Cag79uXJCUkC8f741fcvPJPsFMDe0S96VSq3mMYF8JnA7a570uQ==}
+  /@tabler/icons@2.15.0:
+    resolution: {integrity: sha512-6fwWrsLOqmeoDPii4O1/tG1lsaNoPigUEx8UrOgTLJ81HazbAy5rfypp7FN9/PGsal4VDU+hevOkaGkE6algTQ==}
     dev: false
 
   /@testing-library/dom@9.2.0:
