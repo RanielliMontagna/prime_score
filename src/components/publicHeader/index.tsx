@@ -4,12 +4,10 @@ import { AppBar, useAppBarStyles } from '@quantun/core'
 import { Group, Button, Divider, Box, Title } from '@mantine/core'
 import { IconBrandGoogle } from '@tabler/icons-react'
 
-import { useStyles } from './styles'
 import { useAuthStore } from 'store/auth/auth'
 
 export function PublicHeader() {
-  const { theme } = useStyles()
-  const { classes } = useAppBarStyles()
+  const { classes, theme } = useAppBarStyles()
   const { login } = useAuthStore()
 
   return (

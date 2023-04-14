@@ -10,12 +10,9 @@ import {
   Title,
   SimpleGrid,
 } from '@mantine/core'
-
-import { AppBar, LinkAppBar } from '@quantun/core'
+import { AppBar, LinkAppBar, useAppBarStyles } from '@quantun/core'
 import { useDisclosure } from '@mantine/hooks'
 import { IconLogout, IconMoonStars, IconSun, IconChevronDown, IconHome2 } from '@tabler/icons-react'
-
-import { useStyles } from './styles'
 
 import { rotas } from 'components/sidebar/static'
 import { useAppStore } from 'store/app/app'
@@ -24,7 +21,7 @@ import { useAuthStore } from 'store/auth/auth'
 export function PrivateHeader() {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(true)
 
-  const { classes, theme } = useStyles()
+  const { classes, theme } = useAppBarStyles()
   const navigate = useNavigate()
 
   const { logout } = useAuthStore()
