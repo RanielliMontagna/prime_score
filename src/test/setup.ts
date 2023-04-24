@@ -10,6 +10,7 @@ afterEach(() => {
   cleanup();
 });
 
+// Mock do matchMedia do window para evitar problemas com o @mantined/hooks
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn().mockImplementation(query => ({
@@ -23,3 +24,8 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: vi.fn(),
   })),
 })
+
+//Mock do useNavigate do react-router-dom
+vi.mock('react-router-dom', () => ({
+  useNavigate: vi.fn(),
+}));
