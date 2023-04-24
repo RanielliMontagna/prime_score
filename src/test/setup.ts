@@ -26,6 +26,8 @@ Object.defineProperty(window, 'matchMedia', {
 })
 
 //Mock do useNavigate do react-router-dom
+const mockedNavigate = vi.fn();
 vi.mock('react-router-dom', () => ({
-  useNavigate: vi.fn(),
+  ...vi.importActual('react-router-dom'),
+  useNavigate: () => mockedNavigate,
 }));
