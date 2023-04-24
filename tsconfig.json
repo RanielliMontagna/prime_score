@@ -16,7 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src",
-    "types": ["vitest/globals"]
   },
   "include": ["src", "jest.config.ts"],
   "exclude": ["eslintrc.cjs"],
