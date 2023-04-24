@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "coverage": "vitest run --coverage",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "clean": "rm -rf dist && rm -rf coverage && rm -rf node_modules && rm -rf pnpm-lock.yaml"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -40,7 +41,6 @@
     "@quantun/prettier": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
     "@types/js-cookie": "^3.0.3",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",

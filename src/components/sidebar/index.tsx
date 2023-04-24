@@ -67,7 +67,7 @@ export function SideBar() {
               radius={8}
               size="md"
               style={{
-                boxShadow: `0 0 0 2px ${colors[primaryColor][3]}`,
+                boxShadow: `0 0 0 2px ${colors?.[primaryColor][3]}`,
               }}
             />
           </Navbar.Section>
