@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
 
 import { AppBar, useAppBarStyles } from '@quantun/core'
-import { Group, Button, Divider, Box, Title } from '@mantine/core'
+import { Group, Button, Divider, Box } from '@mantine/core'
 import { IconBrandGoogle } from '@tabler/icons-react'
 
 import { useAuthStore } from 'store/auth/auth'
+
+import LogoBlack from 'assets/logo/logo-extend-black.svg'
+import LogoWhite from 'assets/logo/logo-extend-white.svg'
 
 export function PublicHeader() {
   const { classes, theme } = useAppBarStyles()
@@ -13,7 +16,9 @@ export function PublicHeader() {
   return (
     <Box>
       <AppBar
-        logo={<Title order={2}>PS</Title>}
+        logo={
+          <img src={theme.colorScheme === 'dark' ? LogoWhite : LogoBlack} style={{ width: 150 }} />
+        }
         customSpace={{
           center: (
             <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>

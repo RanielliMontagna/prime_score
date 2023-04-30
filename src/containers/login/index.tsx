@@ -2,6 +2,7 @@ import { Grid, Text, Title } from '@mantine/core'
 import { LoginScreen } from '@quantun/login-screen'
 
 import Illustration from 'assets/login/illustration.svg'
+import Logo from 'assets/logo/logo-extend.svg'
 import { useAuthStore } from 'store/auth/auth'
 
 export function Login() {
@@ -19,7 +20,7 @@ export function Login() {
       }
       welcomeContent={
         <>
-          <Title>Prime Score</Title>
+          <img src={Logo} style={{ width: 250 }} />
           <Grid>
             <img src={Illustration} />
           </Grid>
