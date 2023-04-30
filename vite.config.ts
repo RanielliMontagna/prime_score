@@ -10,8 +10,8 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 const pwaOptions: Partial<VitePWAOptions> = {
   registerType: 'autoUpdate',
   manifest: {
-    name: 'Coin Keeper',
-    short_name: 'Coin Keeper',
+    name: 'Prime Score',
+    short_name: 'Prime Score',
     theme_color: '#1971C2',
     icons: [
       {
