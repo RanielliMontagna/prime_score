@@ -18,6 +18,9 @@ import { rotas } from 'components/sidebar/static'
 import { useAppStore } from 'store/app/app'
 import { useAuthStore } from 'store/auth/auth'
 
+import LogoBlack from 'assets/logo/logo-extend-black.svg'
+import LogoWhite from 'assets/logo/logo-extend-white.svg'
+
 export function PrivateHeader() {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(true)
 
@@ -30,7 +33,13 @@ export function PrivateHeader() {
   return (
     <Box>
       <AppBar
-        logo={<Title order={2}>PS</Title>}
+        logo={
+          <img
+            src={themeApp === 'dark' ? LogoWhite : LogoBlack}
+            alt="Logo"
+            style={{ width: '150px' }}
+          />
+        }
         itemsDrawer={
           <>
             <LinkAppBar label="Home" icon={<IconHome2 />} onClick={() => navigate('/')} />

@@ -1,14 +1,15 @@
-import { useAppStore } from 'store/app/app'
-import { Sidebar, ItemSidebar } from '@quantun/core'
+import { useNavigate } from 'react-router-dom'
 
 import { useTheme } from '@emotion/react'
-import { Avatar, Navbar, Stack, Title } from '@mantine/core'
+import { Sidebar, ItemSidebar } from '@quantun/core'
+import { Avatar, Navbar, Stack } from '@mantine/core'
 import { IconLogout, IconMoonStars, IconSun } from '@tabler/icons-react'
 
+import { useAuthStore } from 'store/auth/auth'
+import { useAppStore } from 'store/app/app'
 import { rotas } from './static'
 
-import { useAuthStore } from 'store/auth/auth'
-import { useNavigate } from 'react-router-dom'
+import Logo from 'assets/logo/logo-white.svg'
 
 export function SideBar() {
   const { logout, user } = useAuthStore()
@@ -20,11 +21,7 @@ export function SideBar() {
 
   return (
     <Sidebar
-      logo={
-        <Title order={2} sx={({ white }) => ({ color: white })}>
-          PS
-        </Title>
-      }
+      logo={<img src={Logo} alt="Logo" style={{ width: '100%' }} />}
       items={rotas.map((rota) => ({
         icon: <rota.icon size="1.2rem" stroke={1.5} />,
         label: rota.label,
