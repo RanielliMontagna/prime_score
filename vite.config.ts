@@ -1,7 +1,4 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa'
 
 import react from '@vitejs/plugin-react'
